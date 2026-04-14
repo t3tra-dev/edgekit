@@ -1,4 +1,4 @@
-# EdgeKit: Cloudflare Workers Python native SDK and builder toolkit
+# EdgeKit: Cloudflare Workers Python-native SDK
 
 EdgeKit has two jobs:
 
