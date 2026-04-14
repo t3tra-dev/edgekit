@@ -1,0 +1,96 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "edgekit"
+authors = [
+    { name = "t3tra", email = "t3tra@t3tra.dev" }
+]
+version = "0.1.1"
+description = "Cloudflare Workers Python native SDK and builder toolkit"
+readme = "README.md"
+urls = { "Source" = "https://github.com/t3tra-dev/edgekit" }
+requires-python = ">=3.12"
+dependencies = [
+    "pyodide-py",
+    "webtypy",
+    "workers-py",
+    "workers-runtime-sdk",
+]
+
+[project.scripts]
+edgekit = "edgekit.cli:main"
+
+[dependency-groups]
+dev = [
+    "edgekit",
+    "pyright>=1.1.408",
+    "ruff>=0.15.10",
+]
+
+[tool.uv]
+cache-dir = ".cache/uv"
+
+[tool.uv.workspace]
+members = ["."]
+
+[tool.uv.sources]
+edgekit = { workspace = true, editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/edgekit"]
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+extraPaths = ["src", "examples/web-app/src"]
+reportMissingModuleSource = false
+reportMissingTypeStubs = false
+exclude = [
+    ".cache",
+    "build",
+    ".uv-cache",
+    ".venv",
+    ".venv-workers",
+    ".wrangler",
+    "python_modules",
+    "node_modules",
+    "**/build",
+    "**/.cache",
+    "**/.uv-cache",
+    "**/.venv",
+    "**/.venv-workers",
+    "**/.wrangler",
+    "**/python_modules",
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*",
+]
+
+[tool.ruff]
+cache-dir = ".cache/ruff"
+line-length = 120
+exclude = [
+    ".cache",
+    "build",
+    ".uv-cache",
+    ".venv",
+    ".venv-workers",
+    ".wrangler",
+    "python_modules",
+    "node_modules",
+    "**/build",
+    "**/.cache",
+    "**/.uv-cache",
+    "**/.venv",
+    "**/.venv-workers",
+    "**/.wrangler",
+    "**/python_modules",
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
