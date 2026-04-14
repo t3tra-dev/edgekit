@@ -53,7 +53,7 @@ The root `wrangler.jsonc` should be configured to call `edgekit build` before `w
 Initialize a new project first:
 
 ```bash
-uv run pywrangler init
+uvx --from workers-py==1.9.1 pywrangler init # the latest version of workers-py, v1.9.2, is causing errors at the moment
 cd <your-project>
 uv add edgekit
 ```

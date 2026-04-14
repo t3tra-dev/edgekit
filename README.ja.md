@@ -53,7 +53,7 @@ npm run dev
 まず新しいプロジェクトを初期化します。
 
 ```bash
-uv run pywrangler init
+uvx --from workers-py==1.9.1 pywrangler init # 現時点での最新 workers-py v1.9.2 ではエラーが発生するため
 cd <your-project>
 uv add edgekit
 ```
